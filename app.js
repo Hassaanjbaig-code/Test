@@ -1,6 +1,6 @@
 const projectdata = [
     {
-        id: "Portfolio4", 
+        id: "portfolio4", 
         title: "Tonic",
         frames: ["CANOPY","Back End Dev", 2015],
         Image: "./Btn-icon/Snapshoot Portfolio-d.png",
@@ -8,7 +8,7 @@ const projectdata = [
         language: ["HTML","CSS","JavaScript"],
     },
     {
-        id: "Portfolio1", 
+        id: "portfolio1", 
         title: "Multi-Post Stories",
         frames: ["FACEBOOK","Full Stack Dev", 2015],
         Image: "./Btn-icon/Snapshoot Portfolio-d-1.png",
@@ -16,7 +16,7 @@ const projectdata = [
         language: ["HTML","Ruby on Rails","CSS","JavaScript"],
     },
     {
-        id: "Portfolio2", 
+        id: "portfolio2", 
         title: "FACEBOOK 360",
         frames: ["FACBOOK","Full Stack Dev", 2015],
         Image: "./Btn-icon/Snapshoot Portfolio-d-2.png",
@@ -24,7 +24,7 @@ const projectdata = [
         language: ["HTML","Ruby on Rail","CSS","JavaScript"],
     },
     {
-        id: "Portfolio3", 
+        id: "portfolio3", 
         title: "Uber Navigation",
         frames: ["UBER","Lead Developer", 2018],
         Image: "./Btn-icon/Snapshoot Portfolio-d-3.png",
@@ -33,7 +33,24 @@ const projectdata = [
     },
 ]
 
-const heading = document.querySelector("#popup");
+
+
+function fetchOneProject(id) {
+    const projects = projectdata;
+    let project = {};
+    // console.log(projectdata.length)
+    for (let i of projectdata) {
+        // console.log(i);
+        if (i.id === id) {
+            project = i;
+            // console.log(project);
+        };
+    }
+    console.log(project)
+    if (project) {
+
+        console.log('i am workin', project)
+        const heading = document.querySelector("#popup");
 //  This is html part
 const pophead = document.createElement("div");
 pophead.classList.add("heading-pop");
@@ -43,7 +60,7 @@ const popupheading = document.createElement('h2');
 const popclose = document.createElement("img");
 popclose.classList.add("material-symbols-outlined");
 popclose.src = "./Btn-icon/Disabled.png";
-popclose.alt = "Close"
+popclose.alt = "Close";
 pophead.append(
     popupheading,
     popclose,
@@ -69,6 +86,12 @@ btnmain.append(
     poplive,
     popsource
 );
+
+project.language.forEach(langua => {
+    const languali = document.createElement("li");
+    languali.innerText = langua;
+    poplang.appendChild(languali);
+})
 const wraptext = document.createElement("div")
 wraptext.classList.add("main-lnag");
 wraptext.append(
@@ -82,28 +105,7 @@ popmaindes.append(
     wraptext
 )
 
-
-heading.append(
-    pophead,
-    popframe,
-    popimage,
-    popmaindes
-);
-
-function fetchOneProject(id) {
-    const projects = projectdata;
-    let project = {};
-    // console.log(projectdata.length)
-    for (let i of projectdata) {
-        // console.log(i);
-        if (i.id === id) {
-            project = i;
-            // console.log(project);
-        };
-    }
-    console.log(project)
-    if (project) {
-        popupheading.innerText = project.title;
+popupheading.innerText = project.title;
         popimage.src = project.Image;
         poppara.innerText = project.description;
         project.frames.forEach(frame => {
@@ -111,11 +113,16 @@ function fetchOneProject(id) {
             frameli.innerText = frame ;
             popframe.appendChild(frameli);
         });
-        project.language.forEach(langua => {
-            const languali = document.createElement("li");
-            languali.innerText = langua;
-            poplang.appendChild(languali);
-        })
+        
+
+
+heading.append(
+    pophead,
+    popframe,
+    popimage,
+    popmaindes
+);
+        
         
     };
 };
@@ -126,6 +133,7 @@ const connect = document.querySelectorAll(".connect");
 
 connect.forEach(conn => {
     conn.addEventListener("click", (e)=>{
+        console.log('iam working')
         fetchOneProject(e.target.id);
     })
 })

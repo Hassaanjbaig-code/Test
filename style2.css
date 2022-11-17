@@ -8,14 +8,20 @@
 /* <--- Mobile first  ----> */
 
 .popup {
-    height: 762px;
-    width: 374px;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
     box-sizing: border-box;
     border: 1px solid #dfe1e6;
     border-radius: 16px;
     display: flex;
     flex-direction: column;
     padding: 0 10px;
+    left: 0;
+    top: 0;
+    position: fixed;
+    overflow: scroll;
+    background: rgba(64, 64, 65, 1);
 }
 
  .heading-pop {
@@ -56,7 +62,6 @@
 
   .popup-para {
     width: 100%;
-    height: 222px;
     display: flex;
   }
   
