@@ -12,7 +12,7 @@ const projectdata = [
         title: "Multi-Post Stories",
         frames: ["FACEBOOK","Full Stack Dev", 2015],
         Image: "./Btn-icon/Snapshoot Portfolio-d-1.png",
-        description: "Experimental content creation feature that allows users to add to an existing story over the course of a day without spamming their friends.",
+        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it 1960s with the releaLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it 1960s with the releorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum han printer took a galley of type and scrambled it 1960s with the releawn printer took a galley of type and scrambled it 1960s with the releaLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it 1960s with the relea",
         language: ["HTML","Ruby on Rails","CSS","JavaScript"],
     },
     {
@@ -20,7 +20,7 @@ const projectdata = [
         title: "FACEBOOK 360",
         frames: ["FACBOOK","Full Stack Dev", 2015],
         Image: "./Btn-icon/Snapshoot Portfolio-d-2.png",
-        description: "Exploring the future of media in Facebook's first Virtual Reality app; a place to discover and enjoy 360 photos and videos on Gear VR.",
+        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it 1960s with the releaLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it 1960s with the releorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum han printer took a galley of type and scrambled it 1960s with the releawn printer took a galley of type and scrambled it 1960s with the releaLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it 1960s with the relea",
         language: ["HTML","Ruby on Rail","CSS","JavaScript"],
     },
     {
@@ -28,7 +28,7 @@ const projectdata = [
         title: "Uber Navigation",
         frames: ["UBER","Lead Developer", 2018],
         Image: "./Btn-icon/Snapshoot Portfolio-d-3.png",
-        description: "A smart assistant to make driving more safe, efficient, and fun by unlocking your most expensive computer: your car.",
+        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it 1960s with the releaLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it 1960s with the releorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum han printer took a galley of type and scrambled it 1960s with the releawn printer took a galley of type and scrambled it 1960s with the releaLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it 1960s with the relea",
         language: ["HTML","Ruby on Rail","CSS","JavaScript"],
     },
 ]
@@ -38,18 +38,12 @@ const projectdata = [
 function fetchOneProject(id) {
     const projects = projectdata;
     let project = {};
-    // console.log(projectdata.length)
     for (let i of projectdata) {
-        // console.log(i);
         if (i.id === id) {
             project = i;
-            // console.log(project);
         };
     }
-    console.log(project)
     if (project) {
-
-        console.log('i am workin', project)
         const heading = document.querySelector("#popup");
 //  This is html part
 const pophead = document.createElement("div");
@@ -87,11 +81,11 @@ btnmain.append(
     popsource
 );
 
-project.language.forEach(langua => {
-    const languali = document.createElement("li");
-    languali.innerText = langua;
-    poplang.appendChild(languali);
-})
+// project.language.forEach(langua => {
+//     const languali = document.createElement("li");
+//     languali.innerText = langua;
+//     poplang.appendChild(languali);
+// })
 const wraptext = document.createElement("div")
 wraptext.classList.add("main-lnag");
 wraptext.append(
@@ -105,6 +99,9 @@ popmaindes.append(
     wraptext
 )
 
+const mainbranch1 = document.createElement("div");
+        mainbranch1.classList.add("main-branch-1");
+
 popupheading.innerText = project.title;
         popimage.src = project.Image;
         poppara.innerText = project.description;
@@ -114,17 +111,28 @@ popupheading.innerText = project.title;
             popframe.appendChild(frameli);
         });
         
+        
+        mainbranch1.append(
+            pophead,
+            popframe,
+            popimage,
+            popmaindes
+        )
 
+        const mainhead = document.createElement("div");
+        mainhead.classList.add("mainhead");
+        mainhead.append(
+            mainbranch1
+        )
 
 heading.append(
-    pophead,
-    popframe,
-    popimage,
-    popmaindes
+   mainhead
 );
-        
-        
-    };
+popclose.addEventListener("click", () => {
+    mainhead.style.visibility = "hidden"
+})
+
+ };
 };
 
 // console.log(fetchOneProject("Portfolio"))
@@ -133,8 +141,6 @@ const connect = document.querySelectorAll(".connect");
 
 connect.forEach(conn => {
     conn.addEventListener("click", (e)=>{
-        console.log('iam working')
         fetchOneProject(e.target.id);
     })
 })
-
